@@ -43,6 +43,7 @@ function create ()
     platforms.create(50, 250, 'ground');
     platforms.create(750, 220, 'ground');
 
+
     player = this.physics.add.sprite(100, 450, 'dude');
 
     player.setBounce(0.2);
@@ -104,6 +105,8 @@ function create ()
         //adicionar as bombas após apanhar as estrelas todas da fase
             //o countActive ve o numero de estrelas. caso não acha nenhuma procede
         if (stars.countActive(true) === 0){
+            nivel += 1;
+            nivelText.setText('Nivel: ' + nivel);
             //iterate reativa todas as estrelas, caindo de novo do topo da tela
             stars.children.iterate(function (child){
 
@@ -125,7 +128,12 @@ function create ()
     var score = 0;
     var scoreText;
 
+    //Tabela de nivel
+    var nivel = 1;
+    var nivelText;
+
     scoreText = this.add.text(24, 24, 'score: 0', { fontSize: '48px', fill: '#0b5103' });
+    nivelText = this.add.text(550, 24, 'Nivel: 1', { fontSize: '48px', fill: '#0b5103' });
 
     //Colocar as bombas
 
